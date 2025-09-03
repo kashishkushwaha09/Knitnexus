@@ -14,13 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   WorkerProfile.init({
-    skills: DataTypes.TEXT,
-    work_type: DataTypes.STRING,
-    experience_years: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER
+    skills: {
+        type: DataTypes.TEXT
+      },
+      work_type: {
+        type: DataTypes.STRING
+      },
+      experience_years: {
+        type: DataTypes.INTEGER
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
   }, {
     sequelize,
     modelName: 'WorkerProfile',
+     tableName: 'WorkerProfiles',
+      timestamps: true 
   });
   return WorkerProfile;
 };

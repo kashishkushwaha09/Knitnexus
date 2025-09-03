@@ -14,14 +14,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ManufacturerProfile.init({
-    factory_name: DataTypes.STRING,
-    machinery: DataTypes.TEXT,
-    daily_capacity: DataTypes.STRING,
-    location: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    factory_name: {
+        type: DataTypes.STRING
+      },
+      machinery: {
+        type: DataTypes.TEXT
+      },
+      daily_capacity: {
+        type: DataTypes.STRING
+      },
+      location: {
+        type: DataTypes.STRING
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
   }, {
     sequelize,
     modelName: 'ManufacturerProfile',
+    tableName: 'ManufacturerProfiles',
+    timestamps: true
   });
   return ManufacturerProfile;
 };

@@ -18,14 +18,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Job.init({
-    title: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    duration: DataTypes.STRING,
-    pay_per_day: DataTypes.INTEGER,
-    manufacturerId: DataTypes.INTEGER
+    title: {
+        type: DataTypes.STRING
+      },
+      description: {
+        type: DataTypes.TEXT
+      },
+      duration: {
+        type: DataTypes.STRING
+      },
+      pay_per_day: {
+        type: DataTypes.INTEGER
+      },
+      manufacturerId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
   }, {
     sequelize,
     modelName: 'Job',
+    tableName: 'Jobs',
+      timestamps: true
   });
   return Job;
 };

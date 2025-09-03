@@ -16,11 +16,19 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Application.init({
-    jobId: DataTypes.INTEGER,
-    workerId: DataTypes.INTEGER
+    jobId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      workerId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
   }, {
     sequelize,
     modelName: 'Application',
+    tableName: 'Applications',
+      timestamps: true
   });
   return Application;
 };
