@@ -5,10 +5,13 @@ const { sequelize } = require('./models');
 const errorMiddleware=require('./middlewares/errorHandler');
 const authRoutes = require("./routes/authRoute");
 const profileRoutes=require("./routes/profileRoutes");
+const jobRoutes = require('./routes/jobRoute');
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/profile",profileRoutes);
+app.use('/api/jobs', jobRoutes);
 
 app.use(errorMiddleware);
 const connectToPostgres = async () => {
