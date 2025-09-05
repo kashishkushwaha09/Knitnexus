@@ -33,6 +33,25 @@ exports.applyToJob = async (req, res, next) => {
     next(err);
   }
 };
+exports.appliedJobs=async (req, res, next) => {
+  try {
+    if (req.user.role !== "worker") {
+      return next(new AppError("Only workers can access applied jobs", 403));
+      
+    }
+
+    const applications = await Application.findAll({
+      where: { workerId: req.user.id },
+      attributes: ["jobId"],
+    });
+
+    const appliedJobs = applications.map(app => app.jobId);
+
+    res.json({ success: true, appliedJobs });
+  } catch (err) {
+    next(err);
+  }
+}
 exports.getApplications = async (req, res, next) => {
   try {
     const applications = await Application.findAll({
@@ -46,6 +65,7 @@ exports.getApplications = async (req, res, next) => {
     next(err);
   }
 };
+
 exports.deleteApplication = async (req, res, next) => {
   try {
     const { id } = req.params;

@@ -1,6 +1,7 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
 const express=require('express');
 const app=express();
+const cors=require('cors');
 const { sequelize } = require('./models');
 const errorMiddleware=require('./middlewares/errorHandler');
 const authRoutes = require("./routes/authRoute");
@@ -8,6 +9,7 @@ const profileRoutes=require("./routes/profileRoutes");
 const jobRoutes = require('./routes/jobRoute');
 const application=require('./routes/applicationRoutes');
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/profile",profileRoutes);
