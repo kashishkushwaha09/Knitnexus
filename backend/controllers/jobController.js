@@ -4,9 +4,6 @@ const { AppError } = require('../utils/appError');
 // Create Job
 exports.createJob = async (req, res, next) => {
   try {
-    if (req.user.role !== 'manufacturer') {
-      return next(new AppError('Only manufacturers can post jobs', 403));
-    }
 
     const { title, description, duration, pay_per_day } = req.body;
 

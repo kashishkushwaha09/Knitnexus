@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   WorkerProfile.init({
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+      },
     skills: {
         type: DataTypes.TEXT
       },
