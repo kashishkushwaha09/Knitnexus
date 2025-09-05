@@ -5,9 +5,8 @@ const {sendWhatsAppNotification}=require("../utils/twilio");
 exports.applyToJob = async (req, res, next) => {
   try {
     const { jobId } = req.body;
-    const workerId = req.user.id; // from authUser middleware
-
-    // Check if job exists
+    const workerId = req.user.id; 
+  
     const job = await Job.findByPk(jobId, { include: User });
     if (!job) {
       return next(new AppError("Job not found", 404));
