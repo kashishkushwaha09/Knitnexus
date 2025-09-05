@@ -17,7 +17,7 @@ export default function GigWorkerDashboard() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("http://localhost:4000/api/profile/worker",  {
+    fetch("https://knitnexus-1.onrender.com/api/profile/worker",  {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ useEffect(() => {
   const token = localStorage.getItem("token");
   if (!token) return;
 
-  fetch("http://localhost:4000/api/applications/applied", {
+  fetch("https://knitnexus-1.onrender.com/api/applications/applied", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -57,7 +57,7 @@ useEffect(() => {
 
   // Load jobs
   useEffect(() => {
-    fetch("http://localhost:4000/api/jobs")
+    fetch("https://knitnexus-1.onrender.com/api/jobs")
       .then((res) => res.json())
       .then((data) => setJobs(data.jobs || []))
       .catch((err) => console.error(err));
@@ -78,7 +78,7 @@ useEffect(() => {
         return;
       }
 
-      const res = await fetch("http://localhost:4000/api/profile/worker", {
+      const res = await fetch("https://knitnexus-1.onrender.com/api/profile/worker", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,7 +108,7 @@ useEffect(() => {
 
   if (appliedJobs.includes(jobId)) return; // already applied
     try {
-      const res = await fetch(`http://localhost:4000/api/applications/apply`, {
+      const res = await fetch(`https://knitnexus-1.onrender.com/api/applications/apply`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

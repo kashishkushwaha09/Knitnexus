@@ -16,7 +16,7 @@ useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("http://localhost:4000/api/profile/manufacturer", {
+    fetch("https://knitnexus-1.onrender.com/api/profile/manufacturer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ useEffect(() => {
         return;
       }
 
-      const res = await fetch("http://localhost:4000/api/profile/manufacturer", {
+      const res = await fetch("https://knitnexus-1.onrender.com/api/profile/manufacturer", {
         method: "POST", // backend handles create/update
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ useEffect(() => {
         return;
       }
 
-      const res = await fetch("http://localhost:4000/api/jobs", {
+      const res = await fetch("https://knitnexus-1.onrender.com/api/jobs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
